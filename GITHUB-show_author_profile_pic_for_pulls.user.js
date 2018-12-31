@@ -5,8 +5,8 @@
 // @description  try to take over the world!
 // @downloadURL  https://github.com/JakeThurman/misc-tampermonkey/raw/master/GITHUB-show_author_profile_pic_for_pulls.user.js
 // @author       @JakeThurman
-// @match        https://github.com/**/pulls
-// @match        https://github.com/pulls
+// @match        https://github.com/**/pulls**
+// @match        https://github.com/pulls**
 // @grant        none
 // ==/UserScript==
 
