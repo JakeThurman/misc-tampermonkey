@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         GITHUB - Show author profile pics for pulls
 // @namespace    http://tampermonkey.net/
-// @version      0.2
+// @version      0.3
 // @description  try to take over the world!
 // @downloadURL  https://github.com/JakeThurman/misc-tampermonkey/raw/master/GITHUB-show_author_profile_pic_for_pulls.user.js
 // @author       @JakeThurman
@@ -27,7 +27,7 @@
             var name = author.innerText;
 
             var image = '<img class="from-avatar" src="https://avatars2.githubusercontent.com/u/' + id + '?s=40" width="20" height="20" alt="@' + name + '">';
-            author.innerHTML = "@" + name + " " + image;
+            author.innerHTML = name + " " + image;
         });
     }
 
