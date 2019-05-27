@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         GITHUB - Show author profile pics for pulls
 // @namespace    http://tampermonkey.net/
-// @version      0.3
+// @version      0.4
 // @description  try to take over the world!
 // @downloadURL  https://github.com/JakeThurman/misc-tampermonkey/raw/master/GITHUB-show_author_profile_pic_for_pulls.user.js
 // @author       @JakeThurman
@@ -16,12 +16,11 @@
         if (!location.pathname.toLowerCase().endsWith("/pulls") && !location.pathname.toLowerCase().endsWith("/pulls/"))
             return;
 
-        var parseUrl = queryString => JSON.parse('{"' + decodeURI(queryString.replace(/&/g, "\",\"").replace(/=/g,"\":\"")) + '"}');
+        var getQueryString = url => JSON.parse('{"' + decodeURI((url.split("?")[1] || "").replace(/&/g, "\",\"").replace(/=/g,"\":\"")) + '"}');
 
         document.querySelectorAll(".opened-by a").forEach(function (author) {
             var url = author.getAttribute("data-hovercard-url");
-            var queryString = url.split("?")[1];
-            var params = parseUrl(queryString);
+            var params = getQueryString(url);
 
             var id = params.user_id;
             var name = author.innerText;
