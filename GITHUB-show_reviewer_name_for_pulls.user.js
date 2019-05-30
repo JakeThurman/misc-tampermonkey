@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         GITHUB - Show reviewer name for pulls
 // @namespace    http://tampermonkey.net/
-// @version      0.2
+// @version      0.3
 // @downloadURL  https://github.com/JakeThurman/misc-tampermonkey/raw/master/GITHUB-show_reviewer_name_for_pulls.user.js
 // @author       @JakeThurman
 // @match        https://github.com/**
@@ -21,7 +21,7 @@
             var name = " " + reviewer.getAttribute("alt").replace("@", "");
 
             // Don't append again, if the text is already there.
-            if (reviewer.innerText === name)
+            if (reviewer.parentNode.innerText.trim() === name.trim())
                 return;
 
             var textNode = document.createTextNode(name);
