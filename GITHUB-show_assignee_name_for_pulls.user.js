@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         GITHUB - Show reviewer name for pulls
+// @name         GITHUB - Show assignee name for pulls
 // @namespace    http://tampermonkey.net/
 // @version      0.3
-// @downloadURL  https://github.com/JakeThurman/misc-tampermonkey/raw/master/GITHUB-show_reviewer_name_for_pulls.user.js
+// @downloadURL  https://github.com/JakeThurman/misc-tampermonkey/raw/master/GITHUB-show_assignee_name_for_pulls.user.js
 // @author       @JakeThurman
 // @match        https://github.com/**
 // @grant        none
@@ -27,8 +27,9 @@
             var textNode = document.createTextNode(name);
             reviewer.parentNode.insertBefore(textNode, reviewer);
 
-            // Make width automatic
+             // Adjust styles so both avatar & name are visible
             reviewer.parentNode.style.width = "auto";
+            reviewer.parentNode.classList.remove("avatar-user"); // This removes the !important border-radius
         });
     }
 
